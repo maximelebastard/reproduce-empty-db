@@ -6,7 +6,9 @@ export default class ListUsers extends BaseCommand {
   static commandName = 'list:users'
   static description = ''
 
-  static options: CommandOptions = {}
+  static options: CommandOptions = {
+    startApp: true,
+  }
 
   async run() {
     const users = await db.query().select('*').from('users').limit(10) // does not work, db is undefined

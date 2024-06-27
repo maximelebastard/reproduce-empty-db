@@ -5,10 +5,12 @@ export default class ListUsersDynamicimport extends BaseCommand {
   static commandName = 'list:users-dynamicimport'
   static description = ''
 
-  static options: CommandOptions = {}
+  static options: CommandOptions = {
+    startApp: true,
+  }
 
   async run() {
-    const db = await this.app.container.make('lucid.db')
+    const db = await import('@adonisjs/lucid/services/db')
     const users = await db.default.query().select('*').from('users').limit(10)
     console.table(users)
   }

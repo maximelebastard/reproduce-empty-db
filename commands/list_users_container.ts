@@ -5,7 +5,9 @@ export default class ListUsersContainer extends BaseCommand {
   static commandName = 'list:users-container'
   static description = ''
 
-  static options: CommandOptions = {}
+  static options: CommandOptions = {
+    startApp: true,
+  }
 
   async run() {
     const db = await this.app.container.make('lucid.db') // Getting "cannot resolve binding "lucid.db" from the container"
